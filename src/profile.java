@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
 public class profile {
-    static int counter = 1;
-    final private int id;
     private String username;
     private String password;
     private String bio;
@@ -13,18 +11,14 @@ public class profile {
 
 
     public profile(String username, String password, String bio, String profilePic) {
-        this.id = counter;
         this.username = username;
         this.password = password;
         this.bio = bio;
         this.profilePic = profilePic;
         this.followlist = new ArrayList<>();
-        counter++;
+        this.Postlist = new ArrayList<>();
     }
 
-    public int getId() {
-        return id;
-    }
 
     public String getUsername() {
         return username;
@@ -67,13 +61,23 @@ public class profile {
     }
 
     public void addFriend(profile user){
-        followlist.add(user);
+        if (!followlist.contains(user)){
+            followlist.add(user);
+        }
     }
 
-    public void addpost(Post p){
-        Postlist.add(p);
+    public void addpost(String content ){
+        Postlist.add(new Post(content,this));
     }
 
+    @Override
+    public String toString() {
+        return  "username='" + username + '|' +
+                ", bio='" + bio + '|' +
+                ", profilePictureUrl='" + profilePic + '|' +
+                ", friendsCount=" + followlist.size() +
+                ", postsCount=" + Postlist.size();
+    }
 
 
 }

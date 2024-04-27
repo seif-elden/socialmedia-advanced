@@ -20,6 +20,19 @@ public class NetworkService {
         return null; // Login failed
     }
 
+    public void showallprofiles(){
+        // Iterating HashMap through for loop
+        for (Map.Entry<String, profile> set : profiles.entrySet()) {
+
+            // Printing all elements of a Map
+            System.out.println(set.getKey());
+        }
+    }
+
+    public profile getfriend(String username){
+        return profiles.get(username);
+    }
+
 
 }
 
