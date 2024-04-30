@@ -45,7 +45,10 @@ public class Main {
                 System.out.println("Enter profile picture URL:");
                 String profilePicUrl = input.nextLine();
 
-                n1.registerUser(username, password, bio, profilePicUrl);
+                System.out.println("Enter email:");
+                String email = input.nextLine();
+
+                n1.registerUser(username, password, email , bio, profilePicUrl);
             }
         }
 
@@ -70,7 +73,7 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("Enter username you want to follow");
-                    loggedUser.addFriend(n1.getfriend(input.nextLine()));
+                    loggedUser.addFollow(n1.getfriend(input.nextLine()));
                     break;
                 case 4:
                     for (profile x : loggedUser.getFollowlist()){

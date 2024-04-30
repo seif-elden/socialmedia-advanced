@@ -7,6 +7,7 @@ public class Post {
     final private int id;
     private profile author;
     private String content;
+    private String img;
     private LocalDateTime timestamp;
     private ArrayList<comment> comments;
     private ArrayList<profile> likes;
@@ -19,7 +20,6 @@ public class Post {
         this.comments = new ArrayList<>();
         this.likes = new ArrayList<>();
         counter++;
-
     }
 
     public ArrayList<comment> getComments() {
@@ -53,6 +53,18 @@ public class Post {
             likes.add(user);
         }
     }
+
+    public boolean checkifliked(profile user){
+        if (likes.contains(user)){
+            return true;
+        }
+        return false;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
 
     public int likeCount(){
         return comments.size();

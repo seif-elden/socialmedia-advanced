@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class profile {
     private String username;
     private String password;
+    private String email;
     private String bio;
     private String profilePic;
     private ArrayList<profile> followlist;
@@ -10,9 +11,10 @@ public class profile {
 
 
 
-    public profile(String username, String password, String bio, String profilePic) {
+    public profile(String username, String password,String email, String bio, String profilePic) {
         this.username = username;
         this.password = password;
+        this.email = email;
         this.bio = bio;
         this.profilePic = profilePic;
         this.followlist = new ArrayList<>();
@@ -44,6 +46,10 @@ public class profile {
         return followlist;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -60,7 +66,11 @@ public class profile {
         this.profilePic = profilePic;
     }
 
-    public void addFriend(profile user){
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void addFollow(profile user){
         if (!followlist.contains(user)){
             followlist.add(user);
         }
@@ -69,6 +79,15 @@ public class profile {
     public void addpost(String content ){
         Postlist.add(new Post(content,this));
     }
+
+    public int getfollowerscount() {
+        return followlist.size();
+    }
+
+    public int getpostscount() {
+        return Postlist.size();
+    }
+
 
     @Override
     public String toString() {
